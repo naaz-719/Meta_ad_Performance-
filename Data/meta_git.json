@@ -1,0 +1,22 @@
+[
+    {
+        "p_rel_url" : "naaz-719/Meta_ad_Performance-/refs/heads/main/Data/ad_events.csv",
+        "p_sink_folder" : "Meta_ad_events",
+        "p_sink_file" : "ad_events.csv"
+    },
+    {
+        "p_rel_url" : "naaz-719/Meta_ad_Performance-/refs/heads/main/Data/ads.csv",
+        "p_sink_folder" : "Meta_ads",
+        "p_sink_file" : "ads.csv"
+    },
+    {
+        "p_rel_url" : "naaz-719/Meta_ad_Performance-/refs/heads/main/Data/campaigns.csv",
+        "p_sink_folder" : "Meta_campaigns",
+        "p_sink_file" : "campaigns.csv"
+    },
+    {
+        "p_rel_url" : "naaz-719/Meta_ad_Performance-/refs/heads/main/Data/users.csv",
+        "p_sink_folder" : "Meta_users",
+        "p_sink_file" : "users.csv"
+    }
+]
