@@ -13,6 +13,12 @@ The solution demonstrates a modern analytics workflow involving:
 
 ---
 
+# Live Dashboard
+
+🔗 Power BI Dashboard: https://app.fabric.microsoft.com/links/QexeCza8Xx?ctid=880db91c-d2b8-4752-96bb-ec6f76398bf3&pbi_source=linkShare
+
+---
+
 # Architecture
 
 ```text
