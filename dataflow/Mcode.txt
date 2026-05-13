@@ -1,0 +1,26 @@
+Mcode
+let
+    // Define the start and end dates for the calendar
+    StartDate = #date(2024, 1, 1),
+    EndDate = #date(2024, 12, 31),
+    
+    // Create a list of dates between start and end dates
+    DateList = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
+    
+    // Convert the list to a table
+    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+
+    // Add useful columns
+    AddYear = Table.AddColumn(DateTable, "Year", each Date.Year([Date]), Int64.Type),
+    AddMonth = Table.AddColumn(AddYear, "Month", each Date.Month([Date]), Int64.Type),
+    AddMonthName = Table.AddColumn(AddMonth, "Month Name", each Date.ToText([Date], "MMMM"), type text),
+    AddMonthShort = Table.AddColumn(AddMonthName, "Month Short", each Date.ToText([Date], "MMM"), type text),
+    AddQuarter = Table.AddColumn(AddMonthShort, "Quarter", each "Q" & Text.From(Date.QuarterOfYear([Date])), type text),
+    AddDay = Table.AddColumn(AddQuarter, "Day", each Date.Day([Date]), Int64.Type),
+    AddDayOfWeek = Table.AddColumn(AddDay, "Day of Week", each Date.DayOfWeek([Date]), Int64.Type),
+    AddDayName = Table.AddColumn(AddDayOfWeek, "Day Name", each Date.ToText([Date], "dddd"), type text),
+    AddWeekOfYear = Table.AddColumn(AddDayName, "Week of Year", each Date.WeekOfYear([Date]), Int64.Type),
+    AddIsWeekend = Table.AddColumn(AddWeekOfYear, "Is Weekend", each if Date.DayOfWeek([Date]) >= 5 then true else false, type logical),
+  #"Changed column type" = Table.TransformColumnTypes(AddIsWeekend, {{"Date", type date}})
+in
+    #"Changed column type"
